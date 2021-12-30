@@ -20,14 +20,14 @@ function Cart() {
 		cart.map((item) => (price += item.price));
 		setTotal(price);
 	};
-	console.log(total);
+
 	return (
 		<div className=" flex bg-white w-screen h-screen pl-20 pr-20 pt-10 mt-2">
 			{cart.length !== 0 ? (
 				<>
 					<div className="flex flex-col w-2/4">
 						{cart.map((item) => (
-							<CartBox prodDetails={item} />
+							<CartBox prodDetails={item} key={item.id} />
 						))}
 					</div>
 					<div className=" ml-10 w-1/3 bg-gray-200 h-32">

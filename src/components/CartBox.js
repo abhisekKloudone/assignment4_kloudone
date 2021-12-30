@@ -3,10 +3,12 @@ import { useStateContext } from "../context/StateProvider";
 
 function CartBox({ prodDetails }) {
 	const [itemCount, setItemCount] = useState(0);
+
 	const {
 		state: { cart },
 		dispatch,
 	} = useStateContext();
+
 	return (
 		<div className="w-full flex bg-gray-200 mb-3 ml-5">
 			<img className="w-80 p-2 max-h-52" src={prodDetails.image} alt="" />

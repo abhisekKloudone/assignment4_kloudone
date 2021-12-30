@@ -8,8 +8,6 @@ function Home() {
 		state: { products },
 	} = useStateContext();
 
-	console.log(products);
-
 	return (
 		<div className="w-screen h-screen mt-5">
 			<div className="bg-white  flex flex-wrap object-center pl-20 pr-20">
