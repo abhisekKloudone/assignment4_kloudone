@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ProductBox from "./ProductBox";
 import { Link } from "react-router-dom";
+import { useStateContext } from "../context/StateProvider.js";
 
 function Home() {
-	const [product, setProduct] = useState([]);
+	const {
+		state: { products },
+	} = useStateContext();
 
-	useEffect(() => {
-		fetch("https://fakestoreapi.com/products")
-			.then((res) => res.json())
-			.then((item) => setProduct(item));
-	}, []);
-	console.log(product);
+	console.log(products);
 
 	return (
-		<div className="w-screen h-screen ">
-			<div className="bg-gray-800  flex flex-wrap object-center pl-20 pr-20">
-				{product.map((item) => (
-					<Link to="/product/{item.id}">
-						<ProductBox key={item.id} image={item.image} title={item.title} />
-					</Link>
+		<div className="w-screen h-screen mt-5">
+			<div className="bg-white  flex flex-wrap object-center pl-20 pr-20">
+				{products.map((product) => (
+					<div key={product.id}>
+						<Link to={`/product/${product.id}`}>
+							<ProductBox product={product} />
+						</Link>
+					</div>
 				))}
 			</div>
 		</div>
